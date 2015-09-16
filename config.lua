@@ -8,7 +8,7 @@ require("io")
 require("posix")
 
 -- Update path for imapfilter relative files
-package.path = package.path .. ';' .. os.getenv("HOME") .. '/.imapfilter/?.lua'
+package.path = package.path .. ';' .. '/home/spamfilter/.imapfilter/?.lua'
 require("lua-popen3/pipe")
 
 --
@@ -201,6 +201,4 @@ require("accounts")
 
 
 forever()
--- Daemon mode fails to properly recover when the remote server trips
--- and the connection closes, so it needs to be run in a wrapper script.
---become_daemon(600, forever)
+
