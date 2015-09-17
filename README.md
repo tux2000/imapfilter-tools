@@ -1,7 +1,7 @@
 README
 ------ 
 
-The goal of this repo is to provide a reliable wrapper for imapfilter and to add SPAM filtering capability via spamassassin.
+This repo provided configuration files for imapfilter to add SPAM filtering capability via spamassassin. It is based on the repository by Kyle Manna: https://github.com/kylemanna/imapfilter-tools
 
 Dependencies:
 * Scripts expect [lua-popen3](https://github.com/kylemanna/lua-popen3) to be available @ <code>~/.imapfilter/lua-popen3</code>
