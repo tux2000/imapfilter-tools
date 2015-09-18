@@ -1,0 +1,3 @@
+[submodule "lua-popen3"]
+	path = lua-popen3
+	url = git://github.com/kylemanna/lua-popen3.git
