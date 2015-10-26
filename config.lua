@@ -114,6 +114,20 @@ function sa_learn(learn_type, results, dest)
 end
 
 --
+-- Report spam messages to hash sharing and teach the bayesian classifier
+--
+function report_learn(learn_type, results, dest)
+	local learn_arg = learn_type
+	local subresult_cnt = 32 -- Number of messages to process in each pass
+	local max_procs = 1 -- Number of sa-learn processes to run in parallel
+
+	for subresults, msgs in iter_msgs(results, subresult_cnt) do
+		local status = pipe_multi(msgs, max_procs, 'spamassassin', learn_arg)
+		subresults:move_messages(dest)
+	end
+end
+
+--
 -- Run in an infinite loop
 --
 function forever()
@@ -166,7 +180,8 @@ function forever()
 
 		-- Teach spamassassin about the messages it missed
 		results = false_neg:is_smaller(max_filter_size)
-		sa_learn('spam', results, false_neg_done)
+		--sa_learn('spam', results, false_neg_done)
+                report_learn('-r', results, false_neg_done)
 
 		-- Block until something happens, assuming server supports IMAP IDLE
 		-- Note: there is still a window between checking unseen messages
