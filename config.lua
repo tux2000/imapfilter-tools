@@ -127,13 +127,6 @@ function report_learn(learn_type, results, dest)
 	end
 end
 
---
--- Sleep timer
---
-function sleep(n)
-  os.execute("sleep " .. tonumber(n))
-end
-
 
 --
 -- Run in an infinite loop
@@ -143,7 +136,7 @@ function forever()
 	--max_filter_size = 1024 * 1024 -- 1024 KB
 	max_filter_size = 512000 -- 1024 KB
         --prevent to quick respawning
-        sleep(10)
+        posix.sleep(10)
 
 	account1:create_mailbox('Spam')
 	account1:create_mailbox('Spam/False Positives')
