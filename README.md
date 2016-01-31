@@ -9,3 +9,4 @@ Dependencies:
 For more information:
 * http://blog.kylemanna.com/linux/2013/05/26/use-imapfilter-to-filter-spam-part1
 * http://blog.kylemanna.com/linux/2013/06/09/use-imapfilter-to-filter-spam-part2
+* https://myodroid.wordpress.com/2015/11/21/regain-control-over-your-inbox-keep-the-spam-out/
