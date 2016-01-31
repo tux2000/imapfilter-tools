@@ -40,7 +40,7 @@ function filter(results)
 			--pattern = "^X-Spam-Flag:\\s*YES"
 			local pattern = 'X-Spam-Flag:\\s*YES'
 			local match = regex_search(pattern, msg)
-			local pattern = 'X-Spam-Status: Yes, score=(\\d+\\.\\d+)'
+			local pattern = 'X-Spam-Status: No, score=(-?\\d+\\.\\d+)'
 			local match2,value = regex_search(pattern, msg)
 
 
