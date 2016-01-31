@@ -48,7 +48,8 @@ function filter(results)
 			if match == true then
 				account1.Spam:append_message(msg)
                         elseif match2 == true then
-                                local out '>> value:  "' .. value .. '\n'
+                                local out '>> value:  ' .. value .. '\n'
+                                io.write(out)
 				if value > 4.0 then
                                      account1.SpamSuspicion:append_message(msg)
 			else
