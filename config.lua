@@ -52,6 +52,7 @@ function filter(results)
                                 io.write(out)
 				if value > 4.0 then
                                      account1.SpamSuspicion:append_message(msg)
+                                end
 			else
 				result = 'normal'
 				account1.INBOX:append_message(msg)
