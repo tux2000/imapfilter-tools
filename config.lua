@@ -51,7 +51,11 @@ function filter(results)
                                 local out = '>> value:  ' .. value .. '\n'
                                 io.write(out)
 				if tonumber(value) > 4.0 then
+                                     result = 'Suspicious'
                                      account1.SpamSuspicion:append_message(msg)
+                                else
+				     result = 'normal'
+				     account1.INBOX:append_message(msg)
                                 end
 			else
 				result = 'normal'
