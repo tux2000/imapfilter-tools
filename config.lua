@@ -50,7 +50,7 @@ function filter(results)
                         elseif match2 == true then
                                 local out = '>> value:  ' .. value .. '\n'
                                 io.write(out)
-				if value > 4.0 then
+				if tonumber(value) > 4.0 then
                                      account1.SpamSuspicion:append_message(msg)
                                 end
 			else
