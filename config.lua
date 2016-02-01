@@ -55,7 +55,7 @@ function filter(results)
 				subject = '(unknown)'
 			end
 			local out = '>> Msg "' .. subject .. '" is '
-                        out = out .. result .. '\n'
+                        -- out = out .. result .. '\n'
 			io.write(out)
 		end
 
