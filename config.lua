@@ -49,8 +49,8 @@ function filter(results)
 				account1.INBOX:append_message(msg)
 			end
 
-			--pattern = 'Subject:\\s*(.*)\n'
-			--match2, cap = regex_search(pattern, msg)
+			pattern = 'Subject:\\s*(.*)\\n'
+			match3, subject = regex_search(pattern, msg)
 			if subject == nil then
 				subject = '(unknown)'
 			end
