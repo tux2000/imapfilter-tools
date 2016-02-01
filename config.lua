@@ -49,14 +49,14 @@ function filter(results)
 				account1.INBOX:append_message(msg)
 			end
 
-			pattern = 'Subject:\\s*(.*)\\n'
+			pattern = 'Subject:\\s*(.*)\\r\\n'
 			match3, subject = regex_search(pattern, msg)
 			if match3 == false then
 				subject = '(unknown)'
 			end
-			--io.write('>> Msg "' .. subject .. '" is ' .. result .. '\n')
-                        --for some reason the new .. start at the beginning of the line again
-                        io.write('>> TT "' .. subject .. '"\n')
+			io.write('>> Msg "' .. subject .. '" is ' .. result .. '\n')
+                        --for some reason the new .. start at the beginning of the line again; OK, got it: windows line ending: \r\n
+                        --io.write('>> TT "' .. subject .. '"\n')
 		end
 
 		-- Make old messages as seen and keep them
