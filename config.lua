@@ -51,9 +51,9 @@ function filter(results)
 
 			pattern = 'Subject:\\s*(.*)\\n'
 			match3, subject = regex_search(pattern, msg)
-			if match3 == false then
+			--if match3 == false then
 				subject = '(unknown)'
-			end
+			--end
 			io.write('>> Msg "' .. subject .. '" is ' .. result .. '\n')
 		end
 
