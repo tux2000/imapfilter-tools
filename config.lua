@@ -54,7 +54,7 @@ function filter(results)
 			if subject == nil then
 				subject = '(unknown)'
 			end
-			local out = '>> Msg "' .. subject ..  '" is ' .. result .. '\n'
+			local out = '>> Msg ' .. subject ..  ' is ' .. result .. '\n'
 			io.write(out)
 		end
 
