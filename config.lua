@@ -54,7 +54,8 @@ function filter(results)
 			--if match3 == false then
 				subject = '(unknown)'
 			--end
-			io.write('>> Msg "' .. subject .. '" is ' .. result .. '\n')
+			--io.write('>> Msg "' .. subject .. '" is ' .. result .. '\n')
+                        io.write('>> TT "' .. subject .. '"\n')
 		end
 
 		-- Make old messages as seen and keep them
