@@ -55,6 +55,7 @@ function filter(results)
 				subject = '(unknown)'
 			end
 			--io.write('>> Msg "' .. subject .. '" is ' .. result .. '\n')
+                        --for some reason the new .. start at the beginning of the line again
                         io.write('>> TT "' .. subject .. '"\n')
 		end
 
