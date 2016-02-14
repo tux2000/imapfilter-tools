@@ -40,22 +40,36 @@ function filter(results)
 			--pattern = "^X-Spam-Flag:\\s*YES"
 			local pattern = 'X-Spam-Flag:\\s*YES'
 			local match = regex_search(pattern, msg)
+			local pattern = 'X-Spam-Status: No, score=(-?\\d+\\.\\d+)'
+			local match2,value = regex_search(pattern, msg)
+
 
 			local result = 'SPAM'
 			if match == true then
 				account1.Spam:append_message(msg)
+                        elseif match2 == true then
+                                local out = '>> value:  ' .. value .. '\n'
+                                io.write(out)
+				if tonumber(value) > 4.0 then
+                                     result = 'Suspicious'
+                                     account1.SpamSuspicion:append_message(msg)
+                                else
+				     result = 'normal'
+				     account1.INBOX:append_message(msg)
+                                end
 			else
 				result = 'normal'
 				account1.INBOX:append_message(msg)
 			end
 
-			--pattern = 'Subject:\\s*(.*)\n'
-			--match2, cap = regex_search(pattern, msg)
-			if subject == nil then
+			pattern = 'Subject:\\s*(.*)\\r\\n'
+			match3, subject = regex_search(pattern, msg)
+			if match3 == false then
 				subject = '(unknown)'
 			end
-			local out = '>> Msg "' .. subject ..  '" is ' .. result .. '\n'
-			io.write(out)
+			io.write('>> Msg "' .. subject .. '" is ' .. result .. '\n')
+                        --for some reason the new .. start at the beginning of the line again; OK, got it: windows line ending: \r\n
+                        --io.write('>> TT "' .. subject .. '"\n')
 		end
 
 		-- Make old messages as seen and keep them
@@ -146,6 +160,7 @@ function forever()
         sleep(10)
 
 	account1:create_mailbox('Spam')
+	account1:create_mailbox('SpamSuspicion')
 	account1:create_mailbox('Spam/False Positives')
 	account1:create_mailbox('Spam/False Negatives')
 	account1:create_mailbox('Spam/False Positives/Processed')
