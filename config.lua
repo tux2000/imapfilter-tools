@@ -172,6 +172,7 @@ function forever()
 	local false_pos_done = account1['Spam/False Positives/Processed']
 	local false_neg = account1['Spam/False Negatives']
 	local false_neg_done = account1['Spam/False Negatives/Processed']
+        local spamsuspicion = account1['SpamSuspicion']
 
 	while true do
 
@@ -193,6 +194,11 @@ function forever()
 		--
 		-- House keeping... Other work to do?
 		--
+
+                -- Recheck Mails that were suspicious, maybe they are now in pyzor etc...
+                local results = spamsuspicion:is_older(1)
+                filter(results)
+                results:delete_messages()
 
 		-- Check for messages older then x days in the original inbox
 		-- and delete them
